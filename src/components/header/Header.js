@@ -14,6 +14,7 @@ import MenuIcon from '@material-ui/icons/Menu';
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
+    
   },
   menuButton: {
     marginRight: theme.spacing(2),
@@ -21,6 +22,9 @@ const useStyles = makeStyles((theme) => ({
   title: {
     flexGrow: 1,
     // position: screenLeft,
+    // marginRight: theme.spacing(2),
+    alignContent: "left"
+    
   },
 }));
 
@@ -37,8 +41,8 @@ export default function Head() {
           <Typography variant="h5" className={classes.title}>
             NEMESIS
           </Typography>
-          <Button color="inherit">Login</Button>
-          <Button color="inherit">SignUp</Button>
+          <Button color="inherit" href="/">Login</Button>
+          <Button color="inherit" href="/signup">SignUp</Button>
 
         </Toolbar>
       </AppBar>
