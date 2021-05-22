@@ -20,11 +20,15 @@ const useStyles = makeStyles((theme) => ({
     marginRight: theme.spacing(2),
   },
   title: {
-    flexGrow: 1,
+    // flexGrow: 1,
     // position: screenLeft,
     // marginRight: theme.spacing(2),
-    alignContent: "left"
+    alignContent: "left",
     
+  },
+  outer:{
+    display:"flex",
+    justifyContent:"space-between",
   },
 }));
 
@@ -34,16 +38,20 @@ export default function Head() {
   return (
     <div className={classes.root}>
       <AppBar position="static" color="secondary">
-        <Toolbar>
-          {/* <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
-            <MenuIcon />
-          </IconButton> */}
+        
+        <Toolbar  className={classes.outer}>
+         
+           <div>
           <Typography variant="h5" className={classes.title}>
             NEMESIS
           </Typography>
+          </div>
+          <div>
           <Button color="inherit" href="/">Login</Button>
           <Button color="inherit" href="/signup">SignUp</Button>
-
+          <Button color="inherit" href="/">Logout</Button>
+          </div>
+          
         </Toolbar>
       </AppBar>
     </div>

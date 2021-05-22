@@ -8,8 +8,8 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import Button from '@material-ui/core/Button';
-import DeleteIcon from '@material-ui/icons/Delete';
-import EditIcon from '@material-ui/icons/Edit';
+import Edit from '../edit/Edit';
+import Delete from '../delete/Delete';
 
 const StyledTableCell = withStyles((theme) => ({
   head: {
@@ -74,8 +74,8 @@ export default function Info() {
               </StyledTableCell>
               <StyledTableCell align="right">{row.email}</StyledTableCell>
               <StyledTableCell align="right">{row.address}</StyledTableCell>
-              <StyledTableCell align="right"><Button color="secondary" href="/edit"><EditIcon></EditIcon></Button></StyledTableCell>
-              <StyledTableCell align="right"><Button color="primary" href="/delete"><DeleteIcon></DeleteIcon></Button></StyledTableCell>
+              <StyledTableCell align="right"><Edit color="secondary" href="/edit"></Edit></StyledTableCell>
+              <StyledTableCell align="right"><Delete color="primary" href="/delete"></Delete></StyledTableCell>
             </StyledTableRow>
           ))}
         </TableBody>

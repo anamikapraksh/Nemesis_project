@@ -7,8 +7,10 @@ import Delete from "./components/delete/Delete";
 import Edit from "./components/edit/Edit";
 import './App.css';
 import { Router } from "@reach/router";
+import Axios from 'axios';
 import logo from './logo.svg';
 
+Axios.defaults.baseURL = "https://nemesis-backend.herokuapp.com/";
 
 function App() {
   return (
