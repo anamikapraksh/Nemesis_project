@@ -24,7 +24,7 @@ import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
-import ILogIn from "../../functions/User";
+import {ILogIn} from "../../functions/User";
 
 function Copyright() {
   return (
@@ -65,6 +65,31 @@ export default function Log() {
   const [password,setPassword] = useState('');
 
   const classes = useStyles();
+
+
+  const handleSubmit = async () => {
+    let result;
+    // setButtonstate(true)
+    const data = {
+      email,
+      password,
+    };
+    try {
+      result = await ILogIn(data);
+      localStorage.setItem("AUTH", true);
+      localStorage.setItem("User_details", JSON.stringify(result));
+      console.log(result);
+      // window.location.reload();
+      // window.location.href = "/table";
+    } catch (err) {
+      console.log(err);
+      // setButtonstate(false)
+      // setSnack(true)
+      // setSuccerr("error")
+      // setDescri("Error !");
+    }
+  };
+
 
   return (
     <Container component="main" maxWidth="xs">
