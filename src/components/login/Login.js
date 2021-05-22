@@ -80,7 +80,7 @@ export default function Log() {
       localStorage.setItem("User_details", JSON.stringify(result));
       console.log(result);
       // window.location.reload();
-      // window.location.href = "/table";
+      window.location.href = "/details";
     } catch (err) {
       console.log(err);
       // setButtonstate(false)
@@ -101,7 +101,7 @@ export default function Log() {
         <Typography component="h1" variant="h5">
           Sign in
         </Typography>
-        <form className={classes.form} noValidate>
+        {/* <form className={classes.form} noValidate> */}
           <TextField
             variant="outlined"
             margin="normal"
@@ -136,6 +136,7 @@ export default function Log() {
             variant="contained"
             color="secondary"
             className={classes.submit}
+            onClick={handleSubmit}
           >
             Sign In
           </Button>
@@ -151,7 +152,7 @@ export default function Log() {
               </Link>
             </Grid>
           </Grid>
-        </form>
+        {/* </form> */}
       </div>
       <Box mt={8}>
         <Copyright />

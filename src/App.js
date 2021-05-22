@@ -13,6 +13,22 @@ import logo from './logo.svg';
 Axios.defaults.baseURL = "https://nemesis-backend.herokuapp.com/";
 
 function App() {
+
+  let udetails = JSON.parse(localStorage.getItem("User_details"));
+  if (udetails) {
+    Axios.interceptors.request.use(
+      (config) => {
+        config.headers.authorization = `Bearer ${udetails.token}`;
+        return config;
+      },
+      (error) => {
+        return Promise.reject(error);
+      }
+    );
+  }
+
+
+
   return (
     <div className="App">
      <Header></Header>
