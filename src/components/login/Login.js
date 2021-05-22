@@ -30,8 +30,8 @@ function Copyright() {
   return (
     <Typography variant="body2" color="textSecondary" align="center">
       {"Copyright © "}
-      <Link color="inherit" href="https://material-ui.com/">
-        Your Website
+      <Link color="inherit" href="#">
+        Nemesis
       </Link>{" "}
       {new Date().getFullYear()}
       {"."}
@@ -138,7 +138,7 @@ export default function Log() {
             className={classes.submit}
             onClick={handleSubmit}
           >
-            Sign In
+            Log In
           </Button>
           <Grid container>
             {/* <Grid item xs>
