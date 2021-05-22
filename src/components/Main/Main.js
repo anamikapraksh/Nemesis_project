@@ -110,8 +110,8 @@ handleSubmit()
                <StyledTableCell align="center">{row.name}</StyledTableCell>
              <StyledTableCell align="center">{row.email}</StyledTableCell>
               <StyledTableCell align="center">{row.address}</StyledTableCell>
-              <StyledTableCell align="center"><Edit color="secondary" href="/edit"></Edit></StyledTableCell>
-              <StyledTableCell align="center"><Delete color="primary" href="/delete"></Delete></StyledTableCell>
+              <StyledTableCell align="center"><Edit color="secondary" href="/edit" name={row.name} email={row.email} address={row.address} id={row._id}></Edit></StyledTableCell>
+              <StyledTableCell align="center"><Delete color="primary" href="/delete" name={row.name} id={row._id}></Delete></StyledTableCell>
             </StyledTableRow>
           ))}
         </TableBody>

@@ -7,14 +7,17 @@ import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import EditIcon from '@material-ui/icons/Edit';
-import EditUser from '../../functions/User';
+import {EditUser} from '../../functions/User';
 
-export default function Edit() {
+export default function Edit(props) {
 
 
-    const [username,setUsername] = useState('');
-    const [email,setEmail] = useState('');
-    const [password,setPassword] = useState('');
+
+
+    const [name,setUsername] = useState('');
+    const [id,setId] = useState(props.id);
+    // const [email,setEmail] = useState('');
+    // const [password,setPassword] = useState('');
     // const [confirmpassword,setConfirmpass] = useState('');
     const [address,setAddress] = useState('');
 
@@ -30,6 +33,33 @@ export default function Edit() {
     setOpen(false);
   };
 
+  const handleSubmit = async () => {
+   handleClose();
+    let result;
+    // setButtonstate(true)
+    const data = {
+      name,
+      address,
+        id,
+    };
+    try {
+      result = await EditUser(data);
+    //   localStorage.setItem("AUTH", true);
+    //   localStorage.setItem("User_details", JSON.stringify(result));
+      console.log(result);
+      // window.location.reload();
+      window.location.reload();
+    } catch (err) {
+      console.log(err);
+      // setButtonstate(false)
+      // setSnack(true)
+      // setSuccerr("error")
+      // setDescri("Error !");
+    }
+  };
+
+
+
   return (
     <div>
       <Button color="secondary" onClick={handleClickOpen}>
@@ -39,7 +69,9 @@ export default function Edit() {
         <DialogTitle id="form-dialog-title">Edit</DialogTitle>
         <DialogContent>
           <DialogContentText>
-           Edit the details
+           <div>Username:{props.name}</div>
+           <div>Email:{props.email}</div>
+           <div>Address:{props.address}</div>
           </DialogContentText>
           <TextField
             autoFocus
@@ -49,16 +81,18 @@ export default function Edit() {
             fullWidth
             onChange={(e)=>  setUsername(e.target.value)}
           />
+          
            <TextField
-            autoFocus
+            
             margin="dense"
             id="email"
-            label="Email Address"
+            label={props.email}
             type="email"
             fullWidth
-            onChange={(e)=>  setEmail(e.target.value)}
+            // onChange={(e)=>  setEmail(e.target.value)}
+            disabled ="true"
           />
-          <TextField
+          {/* <TextField
             autoFocus
             margin="dense"
             id="password"
@@ -66,14 +100,14 @@ export default function Edit() {
             type="password"
             fullWidth
             onChange={(e)=>  setPassword(e.target.value)}
-          />
+          /> */}
            <TextField
-            autoFocus
+            
             margin="dense"
             id="address"
-            label="Address"
+            label="address"
             fullWidth
-            onChange={(e)=>  setPassword(e.target.value)}
+            onChange={(e)=>  setAddress(e.target.value)}
           />
         </DialogContent>
         
@@ -82,7 +116,7 @@ export default function Edit() {
           <Button onClick={handleClose} color="primary">
             CANCEL
           </Button>
-          <Button onClick={handleClose} color="secondary">
+          <Button onClick={handleSubmit} color="secondary">
             EDIT
           </Button>
         </DialogActions>
