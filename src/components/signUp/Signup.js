@@ -12,14 +12,15 @@ import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
-import ISignUp from '../../functions/User';
+import {ISignUp} from '../../functions/User';
+
 
 function Copyright() {
   return (
     <Typography variant="body2" color="textSecondary" align="center">
       {"Copyright © "}
       <Link color="inherit" href="https://material-ui.com/">
-        Your Website
+        Nemesis
       </Link>{" "}
       {new Date().getFullYear()}
       {"."}
@@ -49,14 +50,49 @@ const useStyles = makeStyles((theme) => ({
 
 export default function SignUp() {
 
-const [username,setUsername] = useState('');
-
+const [name,setUsername] = useState("");
+const [email,setEmail] = useState("");
+const [password,setPassword] = useState("");
+const [confirmpassword,setConfirmpass] = useState("");
+const [address,setAddress] = useState("");
 
 // function un(e){
 //   setUsername(e.target.value);
 //   console.log(username)
 // }
   const classes = useStyles();
+
+  const handleSubmit = async () => {
+    if (password === confirmpassword) {
+      // setButtonstate(true);
+      let result;
+      const data = {
+        name,
+        email,
+        address,
+        password,
+      };
+      try {
+        result = await ISignUp(data);
+        // setSnack(true);
+        // setSuccerr("success");
+        // setDescri("User created successfully!");
+        // window.location.href = "/";
+        console.log(result);
+      } catch (err) {
+        console.log(err);
+        // setButtonstate(false);
+        // setSnack(true);
+        // setSuccerr("error");
+        // setDescri("User not created ! Try different Email Id");
+      }
+    } else {
+      // setSnack(true);
+      // setSuccerr("error");
+      // setDescri("Error ! password does not match");
+    }
+  };
+
 
   return (
     <Container component="main" maxWidth="xs">
@@ -92,6 +128,7 @@ const [username,setUsername] = useState('');
                 label="Email Address"
                 name="email"
                 autoComplete="email"
+                onChange={(e)=>  setEmail(e.target.value)}
               />
             </Grid>
 
@@ -105,6 +142,7 @@ const [username,setUsername] = useState('');
                 type="password"
                 id="password"
                 autoComplete="current-password"
+                onChange={(e)=>  setPassword(e.target.value)}
               />
             </Grid>
             <Grid item xs={12}>
@@ -117,6 +155,7 @@ const [username,setUsername] = useState('');
                 type="password"
                 id="password"
                 autoComplete="confirm-password"
+                onChange={(e)=>  setConfirmpass(e.target.value)}
               />
             </Grid>
             <Grid item xs={12}>
@@ -128,6 +167,8 @@ const [username,setUsername] = useState('');
                 label="Address"
                 name="address"
                 autoComplete="address"
+                onChange={(e)=>  setAddress(e.target.value)}
+
               />
             </Grid>
             {/* <Grid item xs={12}>
@@ -143,13 +184,14 @@ const [username,setUsername] = useState('');
             variant="contained"
             color="secondary"
             className={classes.submit}
+            onClick={handleSubmit}
           >
             Sign Up
           </Button>
           <Grid container justify="flex-end">
             <Grid item>
               <Link href="/" variant="body2" color="secondary">
-                Already have an account? Sign in
+                Already have an account? Log in
               </Link>
             </Grid>
           </Grid>

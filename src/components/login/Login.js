@@ -10,7 +10,7 @@
 
 // }
 
-import React from "react";
+import React , { useState }  from "react";
 import Avatar from "@material-ui/core/Avatar";
 import Button from "@material-ui/core/Button";
 import CssBaseline from "@material-ui/core/CssBaseline";
@@ -24,6 +24,7 @@ import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
+import ILogIn from "../../functions/User";
 
 function Copyright() {
   return (
@@ -59,6 +60,10 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function Log() {
+
+  const [email,setEmail] = useState('');
+  const [password,setPassword] = useState('');
+
   const classes = useStyles();
 
   return (
@@ -82,6 +87,7 @@ export default function Log() {
             name="email"
             autoComplete="email"
             autoFocus
+            onChange={(e)=>  setEmail(e.target.value)}
           />
           <TextField
             variant="outlined"
@@ -93,6 +99,7 @@ export default function Log() {
             type="password"
             id="password"
             autoComplete="current-password"
+            onChange={(e)=>  setPassword(e.target.value)}
           />
           {/* <FormControlLabel
             control={<Checkbox value="remember" color="primary" />}

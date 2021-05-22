@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState }  from 'react';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import Dialog from '@material-ui/core/Dialog';
@@ -7,8 +7,19 @@ import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import EditIcon from '@material-ui/icons/Edit';
+import EditUser from '../../functions/User';
 
 export default function Edit() {
+
+
+    const [username,setUsername] = useState('');
+    const [email,setEmail] = useState('');
+    const [password,setPassword] = useState('');
+    // const [confirmpassword,setConfirmpass] = useState('');
+    const [address,setAddress] = useState('');
+
+
+
   const [open, setOpen] = React.useState(false);
 
   const handleClickOpen = () => {
@@ -35,8 +46,8 @@ export default function Edit() {
             margin="dense"
             id="Username"
             label="Username"
-            
             fullWidth
+            onChange={(e)=>  setUsername(e.target.value)}
           />
            <TextField
             autoFocus
@@ -45,14 +56,24 @@ export default function Edit() {
             label="Email Address"
             type="email"
             fullWidth
+            onChange={(e)=>  setEmail(e.target.value)}
+          />
+          <TextField
+            autoFocus
+            margin="dense"
+            id="password"
+            label="Password"
+            type="password"
+            fullWidth
+            onChange={(e)=>  setPassword(e.target.value)}
           />
            <TextField
             autoFocus
             margin="dense"
             id="address"
             label="Address"
-    
             fullWidth
+            onChange={(e)=>  setPassword(e.target.value)}
           />
         </DialogContent>
         
