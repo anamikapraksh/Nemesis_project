@@ -1,16 +1,16 @@
-import React, { useEffect, useState } from 'react';
-import { withStyles, makeStyles } from '@material-ui/core/styles';
-import Table from '@material-ui/core/Table';
-import TableBody from '@material-ui/core/TableBody';
-import TableCell from '@material-ui/core/TableCell';
-import TableContainer from '@material-ui/core/TableContainer';
-import TableHead from '@material-ui/core/TableHead';
-import TableRow from '@material-ui/core/TableRow';
-import Paper from '@material-ui/core/Paper';
-import Button from '@material-ui/core/Button';
-import Edit from '../edit/Edit';
-import Delete from '../delete/Delete';
-import {AllUserDetails} from "../../functions/User";
+import React, { useEffect, useState } from "react";
+import { withStyles, makeStyles } from "@material-ui/core/styles";
+import Table from "@material-ui/core/Table";
+import TableBody from "@material-ui/core/TableBody";
+import TableCell from "@material-ui/core/TableCell";
+import TableContainer from "@material-ui/core/TableContainer";
+import TableHead from "@material-ui/core/TableHead";
+import TableRow from "@material-ui/core/TableRow";
+import Paper from "@material-ui/core/Paper";
+import Button from "@material-ui/core/Button";
+import Edit from "../edit/Edit";
+import Delete from "../delete/Delete";
+import { AllUserDetails } from "../../functions/User";
 
 const StyledTableCell = withStyles((theme) => ({
   head: {
@@ -24,7 +24,7 @@ const StyledTableCell = withStyles((theme) => ({
 
 const StyledTableRow = withStyles((theme) => ({
   root: {
-    '&:nth-of-type(odd)': {
+    "&:nth-of-type(odd)": {
       backgroundColor: theme.palette.action.hover,
     },
   },
@@ -44,18 +44,18 @@ const StyledTableRow = withStyles((theme) => ({
 
 const useStyles = makeStyles({
   table: {
-      marginTop:10,
-    marginLeft:100,
+    marginTop: 10,
+    marginLeft: 100,
     minWidth: 700,
-    maxWidth:1300,
-    marginBottom:30,
+    maxWidth: 1300,
+    marginBottom: 30,
   },
 });
 
 export default function Info() {
   const classes = useStyles();
 
-const [dlts,setDlts]=useState([])
+  const [dlts, setDlts] = useState([]);
 
   const handleSubmit = async () => {
     let result;
@@ -67,11 +67,11 @@ const [dlts,setDlts]=useState([])
     try {
       result = await AllUserDetails();
       setDlts(result);
-    //localStorage.setItem("AUTH", true);
-    //localStorage.setItem("User_details", JSON.stringify(result));
+      //localStorage.setItem("AUTH", true);
+      //localStorage.setItem("User_details", JSON.stringify(result));
       console.log(result);
       // window.location.reload();
-    // window.location.href = "/details";
+      // window.location.href = "/details";
     } catch (err) {
       console.log(err);
       // setButtonstate(false)
@@ -81,16 +81,16 @@ const [dlts,setDlts]=useState([])
     }
   };
 
-useEffect(()=>{
-handleSubmit()
-},[])
+  useEffect(() => {
+    handleSubmit();
+  }, []);
 
   return (
     <TableContainer component={Paper}>
       <Table className={classes.table} aria-label="customized table">
         <TableHead>
           <TableRow>
-          <StyledTableCell align="center">Sl NO</StyledTableCell>
+            <StyledTableCell align="center">Sl NO</StyledTableCell>
 
             <StyledTableCell align="center">USERNAME</StyledTableCell>
             <StyledTableCell align="center">EMAIL</StyledTableCell>
@@ -100,18 +100,34 @@ handleSubmit()
           </TableRow>
         </TableHead>
         <TableBody>
-          {dlts.map((row,n) => (
+          {dlts.map((row, n) => (
             <StyledTableRow key={row.name}>
               {/* <StyledTableCell component="th" scope="row">
                 {row.name}
               </StyledTableCell> */}
-               <StyledTableCell align="center">{n+1}</StyledTableCell>
+              <StyledTableCell align="center">{n + 1}</StyledTableCell>
 
-               <StyledTableCell align="center">{row.name}</StyledTableCell>
-             <StyledTableCell align="center">{row.email}</StyledTableCell>
+              <StyledTableCell align="center">{row.name}</StyledTableCell>
+              <StyledTableCell align="center">{row.email}</StyledTableCell>
               <StyledTableCell align="center">{row.address}</StyledTableCell>
-              <StyledTableCell align="center"><Edit color="secondary" href="/edit" name={row.name} email={row.email} address={row.address} id={row._id}></Edit></StyledTableCell>
-              <StyledTableCell align="center"><Delete color="primary" href="/delete" name={row.name} id={row._id}></Delete></StyledTableCell>
+              <StyledTableCell align="center">
+                <Edit
+                  color="secondary"
+                  href="/edit"
+                  name={row.name}
+                  email={row.email}
+                  address={row.address}
+                  id={row._id}
+                ></Edit>
+              </StyledTableCell>
+              <StyledTableCell align="center">
+                <Delete
+                  color="primary"
+                  href="/delete"
+                  name={row.name}
+                  id={row._id}
+                ></Delete>
+              </StyledTableCell>
             </StyledTableRow>
           ))}
         </TableBody>

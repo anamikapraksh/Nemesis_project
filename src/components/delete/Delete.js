@@ -1,4 +1,4 @@
-import React,{useState} from "react";
+import React, { useState } from "react";
 import Button from "@material-ui/core/Button";
 import Dialog from "@material-ui/core/Dialog";
 import DialogActions from "@material-ui/core/DialogActions";
@@ -14,8 +14,7 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 });
 
 export default function Delete(props) {
-
-    const [id,setId] = useState(props.id);
+  const [id, setId] = useState(props.id);
 
   const [open, setOpen] = React.useState(false);
 
@@ -29,26 +28,26 @@ export default function Delete(props) {
 
   const handleSubmit = async () => {
     handleClose();
-     let result;
-     // setButtonstate(true)
-     const data = {
-           id,
-     };
-     try {
-       result = await DeleteUser(data);
-     //   localStorage.setItem("AUTH", true);
-     //   localStorage.setItem("User_details", JSON.stringify(result));
-       console.log(result);
-       // window.location.reload();
-       window.location.reload();
-     } catch (err) {
-       console.log(err);
-       // setButtonstate(false)
-       // setSnack(true)
-       // setSuccerr("error")
-       // setDescri("Error !");
-     }
-   };
+    let result;
+    // setButtonstate(true)
+    const data = {
+      id,
+    };
+    try {
+      result = await DeleteUser(data);
+      //   localStorage.setItem("AUTH", true);
+      //   localStorage.setItem("User_details", JSON.stringify(result));
+      console.log(result);
+      // window.location.reload();
+      window.location.reload();
+    } catch (err) {
+      console.log(err);
+      // setButtonstate(false)
+      // setSnack(true)
+      // setSuccerr("error")
+      // setDescri("Error !");
+    }
+  };
   return (
     <div>
       <Button color="primary" onClick={handleClickOpen}>

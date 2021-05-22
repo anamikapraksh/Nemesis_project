@@ -40,7 +40,7 @@ export default function Head() {
   function Clr() {
     localStorage.removeItem("User_details");
     localStorage.setItem("AUTH", false);
-    window.location.href='/'
+    window.location.href = "/";
   }
 
   return (
@@ -53,18 +53,18 @@ export default function Head() {
             </Typography>
           </div>
           {udetails && (
-                <div className={classes.timer}>
-                  Session ends in :{" "}
-                  {
-                    <Countdown
-                      date={decoded.exp * 1000}
-                      onComplete={Clr}
-                      controlled={false}
-                      // onTick={(e) => FTSeconds(e)}
-                    />
-                  }
-                </div>
-              )}
+            <div className={classes.timer}>
+              Session ends in :{" "}
+              {
+                <Countdown
+                  date={decoded.exp * 1000}
+                  onComplete={Clr}
+                  controlled={false}
+                  // onTick={(e) => FTSeconds(e)}
+                />
+              }
+            </div>
+          )}
           <div>
             {!udetails && (
               <Button color="inherit" href="/">

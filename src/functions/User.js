@@ -40,7 +40,7 @@ export const EditUser = (data) => {
 export const DeleteUser = (data) => {
   return new Promise((resolve, reject) => {
     const { id } = data;
-    console.log(data)
+    console.log(data);
     Axios.delete(`/${id}`, data)
       .then((res) => {
         resolve(res.data);
@@ -50,7 +50,6 @@ export const DeleteUser = (data) => {
       });
   });
 };
-
 
 export const AllUserDetails = (data) => {
   return new Promise((resolve, reject) => {

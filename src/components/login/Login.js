@@ -1,16 +1,6 @@
-// import React from "react";
-// import "./Login.css";
 
-// export default function Log() {
-// return(
-//     <div>
-//         Hello
-//     </div>
-// );
 
-// }
-
-import React , { useState }  from "react";
+import React, { useState } from "react";
 import Avatar from "@material-ui/core/Avatar";
 import Button from "@material-ui/core/Button";
 import CssBaseline from "@material-ui/core/CssBaseline";
@@ -24,7 +14,7 @@ import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
-import {ILogIn} from "../../functions/User";
+import { ILogIn } from "../../functions/User";
 
 function Copyright() {
   return (
@@ -60,12 +50,10 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function Log() {
-
-  const [email,setEmail] = useState('');
-  const [password,setPassword] = useState('');
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
   const classes = useStyles();
-
 
   const handleSubmit = async () => {
     let result;
@@ -90,7 +78,6 @@ export default function Log() {
     }
   };
 
-
   return (
     <Container component="main" maxWidth="xs">
       <CssBaseline />
@@ -102,56 +89,56 @@ export default function Log() {
           Sign in
         </Typography>
         {/* <form className={classes.form} noValidate> */}
-          <TextField
-            variant="outlined"
-            margin="normal"
-            required
-            fullWidth
-            id="email"
-            label="Email Address"
-            name="email"
-            autoComplete="email"
-            autoFocus
-            onChange={(e)=>  setEmail(e.target.value)}
-          />
-          <TextField
-            variant="outlined"
-            margin="normal"
-            required
-            fullWidth
-            name="password"
-            label="Password"
-            type="password"
-            id="password"
-            autoComplete="current-password"
-            onChange={(e)=>  setPassword(e.target.value)}
-          />
-          {/* <FormControlLabel
+        <TextField
+          variant="outlined"
+          margin="normal"
+          required
+          fullWidth
+          id="email"
+          label="Email Address"
+          name="email"
+          autoComplete="email"
+          autoFocus
+          onChange={(e) => setEmail(e.target.value)}
+        />
+        <TextField
+          variant="outlined"
+          margin="normal"
+          required
+          fullWidth
+          name="password"
+          label="Password"
+          type="password"
+          id="password"
+          autoComplete="current-password"
+          onChange={(e) => setPassword(e.target.value)}
+        />
+        {/* <FormControlLabel
             control={<Checkbox value="remember" color="primary" />}
             label="Remember me"
           /> */}
-          <Button
-            type="submit"
-            fullWidth
-            variant="contained"
-            color="secondary"
-            className={classes.submit}
-            onClick={handleSubmit}
-          >
-            Log In
-          </Button>
-          <Grid container>
-            {/* <Grid item xs>
+        <Button
+          type="submit"
+          fullWidth
+          variant="contained"
+          color="secondary"
+          className={classes.submit}
+          onClick={handleSubmit}
+        >
+          Log In
+        </Button>
+        <Grid container>
+          {/* <Grid item xs>
               <Link href="#" variant="body2">
                 Forgot password?
               </Link>
             </Grid> */}
-            <Grid item>
-              <Link href="/signup" variant="body2" color="secondary">
-                {"Don't have an account? Sign Up"}
-              </Link>
-            </Grid>
+          <Grid item>
+            <Link href="/signup" variant="body2" color="secondary">
+              {"Don't have an account? Sign Up"}
+            </Link>
           </Grid>
+        </Grid>
         {/* </form> */}
       </div>
       <Box mt={8}>
