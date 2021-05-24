@@ -35,7 +35,6 @@ function App() {
      
       <BrowserRouter>
         <Switch>
-          {/* <Route path="/" component={Log} exact /> */}
           <NotSecureRoute path="/" component={Log} exact pathname="/details" />
           <NotSecureRoute
             path="/signup"
@@ -53,19 +52,5 @@ function App() {
 function Header() {
   return <Head></Head>;
 }
-// function Login(){
-//  return <Log></Log>;
-// }
-// function Sign(){
-//   return <SignUp></SignUp>;
-// }
-// function Information(){
-//   return <Info></Info>;
-// }
-// function Del(){
-//   return <Delete></Delete>
-// }
-// function EditPage(){
-//   return <Edit></Edit>
-// }
+
 export default App;
