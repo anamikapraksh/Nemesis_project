@@ -32,13 +32,7 @@ function App() {
   return (
     <div className="App">
       <Header></Header>
-      {/* <Router>
-      <Login path='/'></Login>
-      <Sign path='/signup'></Sign>
-      <Information path='/details'></Information>
-      <Del path='/delete'></Del>
-      <EditPage path="/edit"></EditPage>
-    </Router> */}
+     
       <BrowserRouter>
         <Switch>
           {/* <Route path="/" component={Log} exact /> */}
