@@ -42,10 +42,7 @@ export default function Delete(props) {
       window.location.reload();
     } catch (err) {
       console.log(err);
-      // setButtonstate(false)
-      // setSnack(true)
-      // setSuccerr("error")
-      // setDescri("Error !");
+     
     }
   };
   return (
